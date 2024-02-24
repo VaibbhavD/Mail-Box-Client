@@ -1,8 +1,8 @@
 import "./App.css";
-import Singup from "./component/SignUp";
+import Signup from "./component/Signup/SignUp";
 
 function App() {
-  return <Singup />;
+  return <Signup />;
 }
 
 export default App;

@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 
-const Singup = () => {
+const Signup = () => {
   const EmailRef = useRef();
   const PasswordRef = useRef();
   const RePasswordRef = useRef();
@@ -32,7 +32,7 @@ const Singup = () => {
         alert(data.error.message);
       }
     } else {
-      alert("Password Does't Match !");
+      alert("Password Doesn't Match !");
     }
   };
 
@@ -60,7 +60,7 @@ const Singup = () => {
                             ref={EmailRef}
                             required
                           />
-                          <label class="form-label" for="form3Example3c">
+                          <label class="form-label" htmlFor="form3Example3c">
                             Your Email
                           </label>
                         </div>
@@ -76,7 +76,7 @@ const Singup = () => {
                             ref={PasswordRef}
                             required
                           />
-                          <label class="form-label" for="form3Example4c">
+                          <label class="form-label" htmlFor="form3Example4c">
                             Password
                           </label>
                         </div>
@@ -92,7 +92,7 @@ const Singup = () => {
                             ref={RePasswordRef}
                             required
                           />
-                          <label class="form-label" for="form3Example4cd">
+                          <label class="form-label" htmlFor="form3Example4cd">
                             Repeat your password
                           </label>
                         </div>
@@ -105,7 +105,7 @@ const Singup = () => {
                           value=""
                           id="form2Example3c"
                         />
-                        <label class="form-check-label" for="form2Example3">
+                        <label class="form-check-label" htmlFor="form2Example3">
                           I agree all statements in{" "}
                           <a href="#!">Terms of service</a>
                         </label>
@@ -134,4 +134,4 @@ const Singup = () => {
     </section>
   );
 };
-export default Singup;
+export default Signup;
