@@ -37,7 +37,7 @@ const Singup = () => {
   };
 
   return (
-    <section class="h-screen  ">
+    <section class="h-screen">
       <div class="container pt-5">
         <div class=" row d-flex justify-content-center align-items-center">
           <div class="  col-lg-10 col-xl-8">
