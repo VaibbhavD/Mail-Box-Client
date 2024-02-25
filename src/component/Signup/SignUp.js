@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 
-const Signup = () => {
+const Signup = (props) => {
   const EmailRef = useRef();
   const PasswordRef = useRef();
   const RePasswordRef = useRef();
@@ -49,7 +49,7 @@ const Signup = () => {
                       Sign up
                     </p>
 
-                    <form onSubmit={SignUpHandler} class="mx-1 mx-md-4">
+                    <form onSubmit={SignUpHandler} class="mx-1 ">
                       <div class="d-flex flex-row align-items-center mb-4">
                         <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                         <div class="form-outline flex-fill mb-0">
@@ -116,11 +116,15 @@ const Signup = () => {
                           Register
                         </button>
                       </div>
+                      <p className="text-center">
+                        Already Have An Account?
+                        <b onClick={() => props.ChangeAuth()}> Login</b>
+                      </p>
                     </form>
                   </div>
                   <div class="col-md-8 col-lg-6 col-xl-6 d-flex align-items-center order-1 order-lg-2">
                     <img
-                      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                      src="https://img.freepik.com/free-vector/two-factor-authentication-concept-illustration_114360-5280.jpg?w=740&t=st=1708834122~exp=1708834722~hmac=9c3136adc44b109ae4474002d1ddbe2ebc25e0c4fa973194af4e2bcb8ef30559"
                       class="img-fluid"
                       alt="Sample image"
                     />
