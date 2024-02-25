@@ -1,9 +1,13 @@
 import React, { useRef } from "react";
+import { useDispatch } from "react-redux";
+import { AuthActions } from "../../Store/AuthSlice";
+import { Link } from "react-router-dom";
 
-const Signup = (props) => {
+const Signup = () => {
   const EmailRef = useRef();
   const PasswordRef = useRef();
   const RePasswordRef = useRef();
+  const dispatch = useDispatch();
 
   const SignUpHandler = async (e) => {
     e.preventDefault();
@@ -25,8 +29,9 @@ const Signup = (props) => {
         }
       );
       if (res.ok) {
+        const data = await res.json();
+        dispatch(AuthActions.Login(data.idToken));
         alert("Sign Up SuccessFull !");
-        console.log(user);
       } else {
         const data = await res.json();
         alert(data.error.message);
@@ -118,7 +123,10 @@ const Signup = (props) => {
                       </div>
                       <p className="text-center">
                         Already Have An Account?
-                        <b onClick={() => props.ChangeAuth()}> Login</b>
+                        <Link class="text-black" to={"/"}>
+                          {" "}
+                          Login
+                        </Link>
                       </p>
                     </form>
                   </div>
