@@ -1,8 +1,14 @@
 import React, { useRef } from "react";
+import { AuthActions } from "../../Store/AuthSlice";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const Login = (props) => {
+const Login = () => {
   const EmailRef = useRef();
   const PasswordRef = useRef();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const SignUpHandler = async (e) => {
     e.preventDefault();
@@ -22,8 +28,10 @@ const Login = (props) => {
       }
     );
     if (res.ok) {
+      const data = await res.json();
+      dispatch(AuthActions.Login(data.idToken));
       alert("Login SuccessFull !");
-      console.log(user);
+      navigate("/");
     } else {
       const data = await res.json();
       alert(data.error.message);
@@ -81,12 +89,9 @@ const Login = (props) => {
                       </div>
                       <p className="text-center">
                         You Don't Have An Account?{" "}
-                        <b
-                          class="cursor-pointer"
-                          onClick={() => props.ChangeAuth()}
-                        >
+                        <Link class="text-black" to={"/signup"}>
                           Sign Up
-                        </b>
+                        </Link>
                       </p>
                     </form>
                   </div>
