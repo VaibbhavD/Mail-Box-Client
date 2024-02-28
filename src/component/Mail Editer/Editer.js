@@ -24,10 +24,12 @@ const Editer = () => {
 
     dispatch(
       EmailActions.AddSent({
+        id: Math.random(),
         Email: EmailRef.current.value,
         Subject: SubjectRef.current.value,
         Content: Content,
         Time: Date(),
+        db: false,
       })
     );
   };
