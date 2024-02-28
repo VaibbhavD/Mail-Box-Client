@@ -2,7 +2,6 @@ import { useSelector } from "react-redux";
 import { EmailActions } from "./EmailSlice";
 
 export const SentEmail = (SentEmails, email) => {
-  console.log("Action");
   return async (dispatch) => {
     const FetchSentEmail = async () => {
       const response = await fetch(
@@ -18,7 +17,6 @@ export const SentEmail = (SentEmails, email) => {
     };
     try {
       const data = await FetchSentEmail();
-      console.log(data);
     } catch (error) {
       throw new Error(error);
     }
@@ -36,7 +34,6 @@ export const GetSentEmails = (email) => {
     };
     try {
       const SentEmails = await GetSetEmails();
-      console.log(SentEmails);
       dispatch(EmailActions.ReplaceSentEmails(SentEmails));
     } catch (error) {
       // throw new Error(error);

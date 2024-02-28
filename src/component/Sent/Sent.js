@@ -5,7 +5,6 @@ import Sentitems from "./Sentitem";
 
 const Sent = () => {
   const SentEmail = useSelector((state) => state.Email.Sent);
-  console.log(SentEmail);
 
   return (
     <div class="container ">
