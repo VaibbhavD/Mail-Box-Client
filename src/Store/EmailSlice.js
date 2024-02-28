@@ -7,9 +7,8 @@ const EmailSlice = createSlice({
   initialState: InitialState,
   reducers: {
     AddSent: (state, action) => {
-      state.Sent.push(action.payload);
+      state.Sent.unshift(action.payload);
       state.Inbox.push(action.payload);
-      console.log(action.payload);
     },
     AddDraft: (state, action) => {
       state.Draft.push(action.payload);
@@ -24,12 +23,31 @@ const EmailSlice = createSlice({
       const newemail = state.Inbox.find((e) => e.id === action.payload);
       newemail.db = true;
     },
+    DeleteInbox: (state, action) => {
+      const temp = state.Inbox.filter((e) => e.id !== action.payload.id);
+      state.Inbox = temp;
+      console.log(action.payload);
+      state.Trash.unshift(action.payload);
+    },
+
     ReplaceSentEmails: (state, action) => {
-      state.Inbox = action.payload.Sent;
-      state.Sent = action.payload.Sent;
-      state.Draft = action.payload.Draft;
-      state.Star = action.payload.Star;
-      state.Trash = action.payload.Trash;
+      if (action.payload.Inbox) {
+        state.Inbox = action.payload.Inbox;
+      }
+      if (action.payload.Sent) {
+        state.Sent = action.payload.Sent;
+      }
+      if (action.payload.Draft) {
+        state.Draft = action.payload.Draft;
+      }
+      if (action.payload.Star) {
+        state.Star = action.payload.Star;
+      }
+      if (action.payload.Trash) {
+        state.Trash = action.payload.Trash;
+      }
+
+      // state.UnreadEmails = action.payload.UnreadEmails;
     },
   },
 });
