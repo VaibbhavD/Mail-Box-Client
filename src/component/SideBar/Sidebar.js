@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const SideBar = (props) => {
@@ -115,7 +116,10 @@ const SideBar = (props) => {
                   </Link>
                 </li>
                 <li class="nav-item">
-                  <Link to={"/"} class="nav-link align-middle px-0 text-white">
+                  <Link
+                    to={"/trash"}
+                    class="nav-link align-middle px-0 text-white"
+                  >
                     <i class="fs-4 bi-house">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
