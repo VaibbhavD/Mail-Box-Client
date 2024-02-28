@@ -8,6 +8,8 @@ const EmailSlice = createSlice({
   reducers: {
     AddSent: (state, action) => {
       state.Sent.push(action.payload);
+      state.Inbox.push(action.payload);
+      console.log(action.payload);
     },
     AddDraft: (state, action) => {
       state.Draft.push(action.payload);
@@ -18,8 +20,12 @@ const EmailSlice = createSlice({
     AddTrash: (state, action) => {
       state.Trash.push(action.payload);
     },
+    SeeEmails: (state, action) => {
+      const newemail = state.Inbox.find((e) => e.id === action.payload);
+      newemail.db = true;
+    },
     ReplaceSentEmails: (state, action) => {
-      state.Inbox = action.payload.Inbox;
+      state.Inbox = action.payload.Sent;
       state.Sent = action.payload.Sent;
       state.Draft = action.payload.Draft;
       state.Star = action.payload.Star;
