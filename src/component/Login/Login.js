@@ -29,7 +29,7 @@ const Login = () => {
     );
     if (res.ok) {
       const data = await res.json();
-      dispatch(AuthActions.Login(data.idToken));
+      dispatch(AuthActions.Login(data));
       alert("Login SuccessFull !");
       navigate("/");
     } else {
