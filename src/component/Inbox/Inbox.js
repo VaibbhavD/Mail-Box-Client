@@ -1,9 +1,9 @@
 import React from "react";
-import Sentitems from "../Sent/Sentitem";
+import InboxEmail from "./InboxEmail";
 import { useSelector } from "react-redux";
 
 const Inbox = () => {
-  const SentEmail = useSelector((state) => state.Email.Sent);
+  const InboxEmails = useSelector((state) => state.Email.Inbox);
 
   return (
     <div class="container ">
@@ -17,8 +17,8 @@ const Inbox = () => {
               <table class="table email-table no-wrap table-hover v-middle mb-0 font-14">
                 <tbody>
                   {/* <!-- row --> */}
-                  {SentEmail.map((email) => (
-                    <Sentitems email={email} />
+                  {InboxEmails.map((email) => (
+                    <InboxEmail email={email} />
                   ))}
                 </tbody>
               </table>
