@@ -10,6 +10,7 @@ import SentPage from "./component/Pages/SentPage";
 import InboxPage from "./component/Pages/InboxPage";
 import { GetSentEmails, SentEmail } from "./Store/Emailaction";
 import { useEffect } from "react";
+import EmailSummury from "./component/Inbox/EmailSummury";
 
 let Initial = true;
 
@@ -41,12 +42,12 @@ function App() {
         {!IsLoggedin && <Route path="/Signup" element={<Signup />} />}
         {!IsLoggedin && <Route path="*" element={<Login />} />}
       </Routes>
-
       {IsLoggedin && (
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/inbox" element={<InboxPage />} />
+            <Route path="/inbox/:id" element={<EmailSummury />} />
             <Route path="/mailediter" element={<Mail />} />
             <Route path="/sent" element={<SentPage />} />
             <Route path="*" element={<Home />} />
