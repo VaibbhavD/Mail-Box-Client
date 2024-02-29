@@ -1,6 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const InitialState = { Inbox: [], Sent: [], Draft: [], Star: [], Trash: [] };
+const InitialState = {
+  Inbox: [],
+  Sent: [],
+  Draft: [],
+  Star: [],
+  Trash: [],
+  UnreadEmails: [],
+};
 
 const EmailSlice = createSlice({
   name: "EmailSlice",
@@ -9,6 +16,7 @@ const EmailSlice = createSlice({
     AddSent: (state, action) => {
       state.Sent.unshift(action.payload);
       state.Inbox.push(action.payload);
+      state.UnreadEmails.push(action.payload);
     },
     AddDraft: (state, action) => {
       state.Draft.push(action.payload);
@@ -22,12 +30,18 @@ const EmailSlice = createSlice({
     SeeEmails: (state, action) => {
       const newemail = state.Inbox.find((e) => e.id === action.payload);
       newemail.db = true;
+      const temp = state.UnreadEmails.filter((e) => e.id !== action.payload);
+      state.UnreadEmails = temp;
     },
     DeleteInbox: (state, action) => {
       const temp = state.Inbox.filter((e) => e.id !== action.payload.id);
       state.Inbox = temp;
       console.log(action.payload);
       state.Trash.unshift(action.payload);
+    },
+    DeleteSent: (state, action) => {
+      const temp = state.Sent.filter((e) => e.id !== action.payload.id);
+      state.Sent = temp;
     },
 
     MakeImported: (state, action) => {
@@ -41,7 +55,10 @@ const EmailSlice = createSlice({
       const temp = state.Star.filter((e) => e.id !== action.payload.id);
       state.Star = temp;
     },
-
+    Checkupdates: (state) => {
+      const UnreadEmails = state.Inbox.filter((e) => e.db === false);
+      state.UnreadEmails = UnreadEmails;
+    },
     ReplaceSentEmails: (state, action) => {
       if (action.payload.Inbox) {
         state.Inbox = action.payload.Inbox;
@@ -58,6 +75,9 @@ const EmailSlice = createSlice({
       if (action.payload.Trash) {
         state.Trash = action.payload.Trash;
       }
+      // if (action.payload.UnreadEmails) {
+      //   state.UnreadEmails = action.payload.UnreadEmails;
+      // }
 
       // state.UnreadEmails = action.payload.UnreadEmails;
     },
