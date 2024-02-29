@@ -30,6 +30,7 @@ const Editer = () => {
         Content: Content,
         Time: Date(),
         db: false,
+        important: false,
       })
     );
   };
