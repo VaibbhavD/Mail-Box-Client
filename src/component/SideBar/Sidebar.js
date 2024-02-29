@@ -1,9 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthActions } from "../../Store/AuthSlice";
 
 const SideBar = (props) => {
   const UnreadEmails = useSelector((state) => state.Email.UnreadEmails);
+  const dispatch = useDispatch();
+  const Navigate = useNavigate();
+
+  const LogOutHandler = () => {
+    dispatch(AuthActions.Logout());
+    Navigate("/login");
+  };
 
   return (
     <>
@@ -146,7 +154,25 @@ const SideBar = (props) => {
                 </li>
               </ul>
               <hr></hr>
-              <div class="dropdown pb-4">
+              <p class="nav-item btn text-light" onClick={LogOutHandler}>
+                <i class="fs-4 bi-house">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-arrow-return-right"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5"
+                    />
+                  </svg>
+                </i>{" "}
+                <span class="ms-1 d-none d-sm-inline">LogOut</span>
+              </p>
+              {/* <div class="dropdown pb-4">
                 <a
                   href="#"
                   class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
@@ -191,7 +217,7 @@ const SideBar = (props) => {
                     </a>
                   </li>
                 </ul>
-              </div>
+              </div> */}
             </div>
           </div>
           {props.children}
