@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const SideBar = (props) => {
+  const UnreadEmails = useSelector((state) => state.Email.UnreadEmails);
+
   return (
     <>
       <div class="container-fluid">
@@ -58,7 +60,10 @@ const SideBar = (props) => {
                         <path d="M4.98 4a.5.5 0 0 0-.39.188L1.54 8H6a.5.5 0 0 1 .5.5 1.5 1.5 0 1 0 3 0A.5.5 0 0 1 10 8h4.46l-3.05-3.812A.5.5 0 0 0 11.02 4zm-1.17-.437A1.5 1.5 0 0 1 4.98 3h6.04a1.5 1.5 0 0 1 1.17.563l3.7 4.625a.5.5 0 0 1 .106.374l-.39 3.124A1.5 1.5 0 0 1 14.117 13H1.883a1.5 1.5 0 0 1-1.489-1.314l-.39-3.124a.5.5 0 0 1 .106-.374z" />
                       </svg>
                     </i>{" "}
-                    <span class="ms-1 d-none d-sm-inline ">Inbox</span>
+                    <span class="ms-1 d-none d-sm-inline ">
+                      Inbox{" "}
+                      <span class="text-primary">{UnreadEmails.length}</span>
+                    </span>
                   </Link>
                 </li>
                 <li class="nav-item ">
