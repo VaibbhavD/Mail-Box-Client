@@ -3,15 +3,14 @@ import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router";
 import { Link } from "react-router-dom";
 
-const EmailSummury = () => {
+const SentEmailSummury = () => {
   const param = useParams();
   const navigate = useNavigate();
-  const InboxEmails = useSelector((state) => state.Email.Inbox);
-  console.log(InboxEmails);
+  const SentEmails = useSelector((state) => state.Email.Sent);
   console.log(param.id);
 
   let email;
-  InboxEmails.map((e) => {
+  SentEmails.map((e) => {
     if (e.id == param.id) email = e;
   });
 
@@ -26,7 +25,7 @@ const EmailSummury = () => {
       )}
       {email && (
         <>
-          <Link to={"/inbox"}>
+          <Link to={"/sent"}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
@@ -44,20 +43,22 @@ const EmailSummury = () => {
           <main class=" border p-3">
             <div class="details ">
               <div class="flex">
-                <img
+                {/* <img
                   class=" "
                   src="https://bootdey.com/img/Content/avatar/avatar1.png"
-                />
+                /> */}
                 {/* <div class="from"> */}
-                From :<span class="from">{email.Email}</span>
+                <span class="from"> From: {email.Email}</span>
                 <br />
                 {/* </div> */}
                 {/* <div class="date"> */}
                 <b class="text-end date">{email.Time}</b>
                 {/* </div> */}
               </div>
+              <p></p>
               <div class="content">
                 <p>{email.Subject}</p>
+
                 <blockquote>{email.Content}</blockquote>
               </div>
 
@@ -84,4 +85,5 @@ const EmailSummury = () => {
     </>
   );
 };
-export default EmailSummury;
+
+export default SentEmailSummury;
