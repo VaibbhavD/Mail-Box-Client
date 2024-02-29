@@ -35,6 +35,7 @@ export const GetSentEmails = (email) => {
     try {
       const SentEmails = await GetSetEmails();
       dispatch(EmailActions.ReplaceSentEmails(SentEmails));
+      dispatch(EmailActions.Checkupdates());
     } catch (error) {
       // throw new Error(error);
     }
