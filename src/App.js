@@ -14,7 +14,6 @@ import EmailSummury from "./component/Inbox/EmailSummury";
 import TrashPage from "./component/Pages/TrashPage";
 import StarPage from "./component/Pages/StarPage";
 import SentEmailSummury from "./component/Sent/SentEmailSummury";
-import { EmailActions } from "./Store/EmailSlice";
 
 let Initial = true;
 
@@ -26,7 +25,7 @@ function App() {
 
   useEffect(() => {
     dispatch(GetSentEmails(email));
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (Initial) {
