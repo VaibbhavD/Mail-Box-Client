@@ -99,7 +99,10 @@ const SideBar = (props) => {
                   </Link>
                 </li>
                 <li class="nav-item">
-                  <Link to={"/"} class="nav-link align-middle px-0 text-white">
+                  <Link
+                    to={"/star"}
+                    class="nav-link align-middle px-0 text-white"
+                  >
                     <i class="fs-4 bi-house">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
