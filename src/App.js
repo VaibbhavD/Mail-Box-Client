@@ -14,6 +14,7 @@ import EmailSummury from "./component/Inbox/EmailSummury";
 import TrashPage from "./component/Pages/TrashPage";
 import StarPage from "./component/Pages/StarPage";
 import SentEmailSummury from "./component/Sent/SentEmailSummury";
+import { EmailActions } from "./Store/EmailSlice";
 
 let Initial = true;
 
@@ -36,7 +37,13 @@ function App() {
     dispatch(SentEmail(Emails, email));
   }, [Emails]);
 
-  console.log(email);
+  // function CheckemailUpdates() {
+  //   // Code to fetch updates from the API and update the application
+  //   dispatch(EmailActions.Checkupdates());
+  // }
+
+  // // Set interval to check for updates every 24 hours (86,400,000 ms)
+  // setInterval(CheckemailUpdates, 5000);
 
   return (
     <>

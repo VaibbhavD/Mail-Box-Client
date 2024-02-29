@@ -48,7 +48,7 @@ const SentEmailSummury = () => {
                   src="https://bootdey.com/img/Content/avatar/avatar1.png"
                 /> */}
                 {/* <div class="from"> */}
-                <span class="from"> From: {email.Email}</span>
+                <span class="from"> To: {email.Email}</span>
                 <br />
                 {/* </div> */}
                 {/* <div class="date"> */}
