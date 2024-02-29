@@ -1,11 +1,17 @@
 import React from "react";
 import "../../App.css";
+import { useNavigate } from "react-router";
 
 const Sentitems = (porps) => {
   const email = porps.email;
+  const navigate = useNavigate();
+
+  const OnClickHandler = () => {
+    navigate(`/sent/${email.id}`);
+  };
 
   return (
-    <tr className="email">
+    <tr className="email" onClick={OnClickHandler}>
       <td class="text-success">
         <svg
           xmlns="http://www.w3.org/2000/svg"
