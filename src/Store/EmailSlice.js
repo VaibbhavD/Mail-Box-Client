@@ -30,6 +30,18 @@ const EmailSlice = createSlice({
       state.Trash.unshift(action.payload);
     },
 
+    MakeImported: (state, action) => {
+      const NewEmail = state.Inbox.find((e) => e.id === action.payload.id);
+      NewEmail.important = true;
+      state.Star.unshift(NewEmail);
+    },
+    UndoImported: (state, action) => {
+      const NewEmail = state.Inbox.find((e) => e.id === action.payload.id);
+      NewEmail.important = false;
+      const temp = state.Star.filter((e) => e.id !== action.payload.id);
+      state.Star = temp;
+    },
+
     ReplaceSentEmails: (state, action) => {
       if (action.payload.Inbox) {
         state.Inbox = action.payload.Inbox;
