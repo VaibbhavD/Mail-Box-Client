@@ -12,6 +12,8 @@ import { GetSentEmails, SentEmail } from "./Store/Emailaction";
 import { useEffect } from "react";
 import EmailSummury from "./component/Inbox/EmailSummury";
 import TrashPage from "./component/Pages/TrashPage";
+import StarPage from "./component/Pages/StarPage";
+import SentEmailSummury from "./component/Sent/SentEmailSummury";
 
 let Initial = true;
 
@@ -51,7 +53,9 @@ function App() {
             <Route path="/inbox/:id" element={<EmailSummury />} />
             <Route path="/mailediter" element={<Mail />} />
             <Route path="/sent" element={<SentPage />} />
+            <Route path="/sent/:id" element={<SentEmailSummury />} />
             <Route path="/trash" element={<TrashPage />} />
+            <Route path="/star" element={<StarPage />} />
             <Route path="*" element={<Home />} />
           </Routes>
         </Layout>
