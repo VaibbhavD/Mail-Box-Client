@@ -37,6 +37,23 @@ const Editer = () => {
     );
   };
 
+  const SaveDraft = () => {
+    const contentState = editorState.getCurrentContent();
+    const Content = contentState.getPlainText();
+
+    dispatch(
+      EmailActions.AddDraft({
+        id: Math.random(),
+        Email: EmailRef.current.value,
+        Subject: SubjectRef.current.value,
+        Content: Content,
+        Time: Date(),
+        db: false,
+        important: false,
+      })
+    );
+  };
+
   const DiscardHandler = () => {
     setshowNotify((prev) => !prev);
     console.log(showNotify);
@@ -44,7 +61,9 @@ const Editer = () => {
 
   return (
     <>
-      {showNotify && <DiscardNotify setshowNotify={DiscardHandler} />}
+      {showNotify && (
+        <DiscardNotify setshowNotify={DiscardHandler} SaveDraft={SaveDraft} />
+      )}
       <div class="container -mt-5">
         <main class="">
           <div class="card-body bg-primary text-white mailbox-widget pb-0 rounded col-sm-11  ">
@@ -62,6 +81,7 @@ const Editer = () => {
                   id="to"
                   placeholder="email"
                   ref={EmailRef}
+                  required
                 />
               </div>
             </div>
@@ -77,6 +97,7 @@ const Editer = () => {
                   id="bcc"
                   placeholder="subject"
                   ref={SubjectRef}
+                  required
                 />
               </div>
             </div>
