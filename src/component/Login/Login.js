@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../SideBar/NavBar";
+import MailLogo from "../UI/MailLogo";
 
 const Login = () => {
   const EmailRef = useRef();
@@ -96,12 +97,15 @@ const Login = () => {
                         </p>
                       </form>
                     </div>
-                    <div class="col-md-8 col-lg-6 col-xl-6 d-flex align-items-center order-1 order-lg-2">
+                    <div class="col-md-8 col-lg-6 col-xl-6 d-flex  order-1 order-lg-2">
                       <img
                         src="https://img.freepik.com/free-vector/user-verification-unauthorized-access-prevention-private-account-authentication-cyber-security-people-entering-login-password-safety-measures_335657-3530.jpg?w=740&t=st=1708834373~exp=1708834973~hmac=a37cd460b40a3811b5e7b7ca6e9232e98e3ab9aeda7a22e36bb27ee5a64cd129"
                         class="img-fluid"
                         alt="Sample image"
                       />
+                      <div class="">
+                        <MailLogo />
+                      </div>
                     </div>
                   </div>
                 </div>
