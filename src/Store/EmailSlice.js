@@ -59,6 +59,13 @@ const EmailSlice = createSlice({
       const UnreadEmails = state.Inbox.filter((e) => e.db === false);
       state.UnreadEmails = UnreadEmails;
     },
+    AddDraft: (state, action) => {
+      state.Draft.unshift(action.payload);
+    },
+    DeleteDraft: (state, action) => {
+      const temp = state.Draft.filter((e) => e.id !== action.payload.id);
+      state.Draft = temp;
+    },
     ReplaceSentEmails: (state, action) => {
       if (action.payload.Inbox) {
         state.Inbox = action.payload.Inbox;
