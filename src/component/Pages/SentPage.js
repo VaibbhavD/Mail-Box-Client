@@ -1,4 +1,4 @@
-import Sent from "../Sent/Sent";
+import Sent from "../component/Sent/Sent";
 
 const SentPage = () => {
   return <Sent />;

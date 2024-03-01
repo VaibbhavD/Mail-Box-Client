@@ -14,6 +14,7 @@ import EmailSummury from "./component/Inbox/EmailSummury";
 import TrashPage from "./component/Pages/TrashPage";
 import StarPage from "./component/Pages/StarPage";
 import SentEmailSummury from "./component/Sent/SentEmailSummury";
+import DraftPage from "./component/Pages/DraftPage";
 
 let Initial = true;
 
@@ -62,6 +63,7 @@ function App() {
             <Route path="/sent/:id" element={<SentEmailSummury />} />
             <Route path="/trash" element={<TrashPage />} />
             <Route path="/star" element={<StarPage />} />
+            <Route path="/draft" element={<DraftPage />} />
             <Route path="*" element={<Home />} />
           </Routes>
         </Layout>
