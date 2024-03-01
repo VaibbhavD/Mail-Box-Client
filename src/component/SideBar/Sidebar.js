@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthActions } from "../../Store/AuthSlice";
+import MailLogo from "../UI/MailLogo";
 
 const SideBar = (props) => {
   const UnreadEmails = useSelector((state) => state.Email.UnreadEmails);
@@ -19,14 +20,18 @@ const SideBar = (props) => {
         <div class="row flex-nowrap">
           <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
             <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100 ">
-              <a
-                href="/"
+              <Link
+                to="/"
                 class="d-flex align-items-center pb-3 mb-md-0 me-md-auto mx-auto mt-3 text-white text-decoration-none"
               >
-                <span class="fs-2 d-none d-sm-inline text-danger fw-bolder">
-                  Mail BoX
+                <span class=" d-none d-sm-inline text-danger fw-bolder">
+                  <MailLogo>
+                    <span class="d-none d-sm-inline mx-1 fs-3 text-danger">
+                      Mail BoX
+                    </span>
+                  </MailLogo>
                 </span>
-              </a>
+              </Link>
               <ul
                 class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start mt-2 fs-6 fw-bolder "
                 id="menu"
@@ -95,7 +100,10 @@ const SideBar = (props) => {
                   </Link>
                 </li>
                 <li class="nav-item">
-                  <Link to={"/"} class="nav-link align-middle px-0 text-white">
+                  <Link
+                    to={"/draft"}
+                    class="nav-link align-middle px-0 text-white"
+                  >
                     <i class="fs-4 bi-house">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
