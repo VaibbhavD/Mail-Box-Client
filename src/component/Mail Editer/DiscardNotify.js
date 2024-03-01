@@ -1,6 +1,21 @@
-import Modal from "../ModalUI/Modal";
+import { useDispatch } from "react-redux";
+import Modal from "../UI/Modal";
+import { EmailActions } from "../../Store/EmailSlice";
+import { useNavigate } from "react-router";
 
 const DiscardNotify = (props) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const SaveDraft = () => {
+    props.SaveDraft();
+  };
+
+  const DiscardHandler = () => {
+    props.setshowNotify();
+    navigate("/Home");
+  };
+
   return (
     <Modal>
       <div class=" text-center pt-3">
@@ -10,12 +25,13 @@ const DiscardNotify = (props) => {
           <span class="font-weight-bold">Delete Email Click on Discard</span>
           <div class="mt-4 mb-1">
             {" "}
-            <button class="btn btn-primary">
+            <button class="btn btn-primary" onClick={SaveDraft}>
               Draft <i class="fa fa-cloud-download"></i>
             </button>{" "}
             <button
+              type="button"
               class="btn btn-danger"
-              onClick={() => props.setshowNotify()}
+              onClick={DiscardHandler}
             >
               Discard
             </button>{" "}
