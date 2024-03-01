@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { AuthActions } from "../../Store/AuthSlice";
 import { useDispatch } from "react-redux";
+import MailLogo from "../UI/MailLogo";
 
 const NavBar = () => {
   const dispatch = useDispatch();
@@ -9,9 +10,9 @@ const NavBar = () => {
   return (
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary ">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-          Client MailBox
-        </a>
+        <MailLogo>
+          <a class="navbar-brand fs-4 fw-bolder mx-2"> MailBox</a>
+        </MailLogo>
         <button
           class="navbar-toggler"
           type="button"
