@@ -9,6 +9,7 @@ const DiscardNotify = (props) => {
 
   const SaveDraft = () => {
     props.SaveDraft();
+    navigate("/draft");
   };
 
   const DiscardHandler = () => {
