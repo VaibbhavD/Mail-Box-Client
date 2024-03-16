@@ -26,7 +26,7 @@ function App() {
 
   useEffect(() => {
     dispatch(GetSentEmails(email));
-  }, [dispatch]);
+  }, [dispatch, email]);
 
   useEffect(() => {
     if (Initial) {
@@ -48,7 +48,8 @@ function App() {
   return (
     <>
       <Routes>
-        {!IsLoggedin && <Route path="/" element={<Login />} />}
+        {!IsLoggedin && <Route path="login" element={<Login />} />}
+        {!IsLoggedin && <Route path="/" element={<Home />} />}
         {!IsLoggedin && <Route path="/Signup" element={<Signup />} />}
         {!IsLoggedin && <Route path="*" element={<Login />} />}
       </Routes>
