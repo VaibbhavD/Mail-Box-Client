@@ -178,8 +178,13 @@ const SideBar = (props) => {
                     />
                   </svg>
                 </i>{" "}
-                <Link to={"/login"} class="ms-1 d-none d-sm-inline">
-                  LogOut
+                <Link
+                  to={"/login"}
+                  class="ms-1 d-none d-sm-inline decoration:none"
+                >
+                  <button className="bg-primary text-white fw-bolder">
+                    LogOut
+                  </button>
                 </Link>
               </p>
               {/* <div class="dropdown pb-4">
