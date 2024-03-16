@@ -178,7 +178,9 @@ const SideBar = (props) => {
                     />
                   </svg>
                 </i>{" "}
-                <span class="ms-1 d-none d-sm-inline">LogOut</span>
+                <Link to={"/login"} class="ms-1 d-none d-sm-inline">
+                  LogOut
+                </Link>
               </p>
               {/* <div class="dropdown pb-4">
                 <a

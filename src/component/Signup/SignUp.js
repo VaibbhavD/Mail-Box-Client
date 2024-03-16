@@ -126,7 +126,7 @@ const Signup = () => {
                         </div>
                         <p className="text-center">
                           Already Have An Account?
-                          <Link class="text-black" to={"/"}>
+                          <Link class="text-black" to={"/login"}>
                             {" "}
                             Login
                           </Link>

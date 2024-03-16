@@ -11,7 +11,10 @@ const NavBar = () => {
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary ">
       <div class="container-fluid">
         <MailLogo>
-          <a class="navbar-brand fs-4 fw-bolder mx-2"> MailBox</a>
+          <Link to={"/"} class="navbar-brand fs-4 fw-bolder mx-2">
+            {" "}
+            MailBox
+          </Link>
         </MailLogo>
         <button
           class="navbar-toggler"
