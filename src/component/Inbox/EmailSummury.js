@@ -61,7 +61,7 @@ const EmailSummury = () => {
                 <blockquote>{email.Content}</blockquote>
               </div>
 
-              <form method="post" action="">
+              {/* <form method="post" action="">
                 <div class="form-group">
                   <textarea
                     class="form-control"
@@ -76,7 +76,7 @@ const EmailSummury = () => {
                     Send message
                   </button>
                 </div>
-              </form>
+              </form> */}
             </div>
           </main>
         </>
