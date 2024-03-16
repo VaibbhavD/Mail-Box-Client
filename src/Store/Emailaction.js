@@ -1,4 +1,3 @@
-import { useSelector } from "react-redux";
 import { EmailActions } from "./EmailSlice";
 
 export const SentEmail = (SentEmails, email) => {
@@ -12,13 +11,13 @@ export const SentEmail = (SentEmails, email) => {
         }
       );
       if (!response.ok) {
-        throw new Error("Seding Cart Data Failed !");
+        console.log("Seding Cart Data Failed !");
       }
     };
     try {
       const data = await FetchSentEmail();
     } catch (error) {
-      throw new Error(error);
+      // throw new Error(error);
     }
   };
 };
