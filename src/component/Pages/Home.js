@@ -4,12 +4,12 @@ import NavBar from "../SideBar/NavBar";
 import { useNavigate } from "react-router";
 
 const Home = () => {
-  const isloggedin = useSelector((state) => state.Auth.IsloggedIn);
+  const IsLoggedin = useSelector((state) => state.Auth.IsLoggedin);
   const navigate = useNavigate();
 
   return (
     <>
-      {!isloggedin && <NavBar />}
+      {!IsLoggedin && <NavBar />}
       <header class="w-75 h-75 m-auto">
         <div class=" ">
           <div class="row gx-5 align-items-center justify-content-center">
@@ -24,15 +24,15 @@ const Home = () => {
                   across all devices — mobile or otherwise.
                 </p>
                 <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
-                  {isloggedin && (
+                  {IsLoggedin && (
                     <button
                       class="btn btn-primary btn-lg px-4 me-sm-3"
-                      onClick={() => navigate("/Mail")}
+                      onClick={() => navigate("/mailediter")}
                     >
                       <>Compose</>
                     </button>
                   )}
-                  {!isloggedin && (
+                  {!IsLoggedin && (
                     <button
                       class="btn btn-primary btn-lg px-4 me-sm-3"
                       onClick={() => navigate("/login")}
