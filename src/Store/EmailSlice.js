@@ -50,7 +50,7 @@ const EmailSlice = createSlice({
       state.Star.unshift(NewEmail);
     },
     UndoImported: (state, action) => {
-      const NewEmail = state.Star.find((e) => e.id === action.payload.id);
+      const NewEmail = state.Inbox.find((e) => e.id === action.payload.id);
       NewEmail.important = false;
       const temp = state.Star.filter((e) => e.id !== action.payload.id);
       state.Star = temp;
