@@ -6,12 +6,14 @@ import "../../App.css";
 import { useDispatch } from "react-redux";
 import { EmailActions } from "../../Store/EmailSlice";
 import DiscardNotify from "./DiscardNotify";
+import { SpinLoader } from "../UI/Loader";
 
 const Editer = () => {
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
   const [showNotify, setshowNotify] = useState(false);
+  const [loading, setloading] = useState(false);
   const EmailRef = useRef();
   const SubjectRef = useRef();
   const dispatch = useDispatch();
@@ -21,20 +23,25 @@ const Editer = () => {
   };
   const getTextFromEditor = (e) => {
     e.preventDefault();
-    const contentState = editorState.getCurrentContent();
-    const Content = contentState.getPlainText();
+    setloading(true);
+    setTimeout(() => {
+      const contentState = editorState.getCurrentContent();
+      const Content = contentState.getPlainText();
 
-    dispatch(
-      EmailActions.AddSent({
-        id: Math.random(),
-        Email: EmailRef.current.value,
-        Subject: SubjectRef.current.value,
-        Content: Content,
-        Time: Date(),
-        db: false,
-        important: false,
-      })
-    );
+      dispatch(
+        EmailActions.AddSent({
+          id: Math.random(),
+          Email: EmailRef.current.value,
+          Subject: SubjectRef.current.value,
+          Content: Content,
+          Time: Date(),
+          db: false,
+          important: false,
+        })
+      );
+      setloading(false);
+      alert("Email Sent");
+    }, 2000);
   };
 
   const SaveDraft = () => {
@@ -118,13 +125,14 @@ const Editer = () => {
             </div>
             <div class="form-group mt-3">
               <button type="submit" class="btn btn-success px-3 mx-2">
-                Send
+                {loading === true ? <>{SpinLoader}</> : <>Send</>}
               </button>
               <button
                 type="button"
                 class="btn btn-danger mx-2"
                 onClick={DiscardHandler}
               >
+                {" "}
                 Discard
               </button>
             </div>

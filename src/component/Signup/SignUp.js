@@ -1,17 +1,20 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { AuthActions } from "../../Store/AuthSlice";
 import { Link } from "react-router-dom";
 import NavBar from "../SideBar/NavBar";
+import { SpinLoader } from "../UI/Loader";
 
 const Signup = () => {
   const EmailRef = useRef();
   const PasswordRef = useRef();
   const RePasswordRef = useRef();
   const dispatch = useDispatch();
+  const [loader, setloader] = useState(false);
 
   const SignUpHandler = async (e) => {
     e.preventDefault();
+    setloader(true);
     const Email = EmailRef.current.value;
     const Password = PasswordRef.current.value;
     const RePassword = RePasswordRef.current.value;
@@ -31,10 +34,12 @@ const Signup = () => {
       );
       if (res.ok) {
         const data = await res.json();
+        setloader(false);
         dispatch(AuthActions.Login(data.idToken));
         alert("Sign Up SuccessFull !");
       } else {
         const data = await res.json();
+        setloader(false);
         alert(data.error.message);
       }
     } else {
@@ -121,7 +126,8 @@ const Signup = () => {
 
                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                           <button type="submit" class="btn btn-primary btn-lg">
-                            Register
+                            {loader && <>{SpinLoader}</>}
+                            {!loader && <>Register</>}
                           </button>
                         </div>
                         <p className="text-center">

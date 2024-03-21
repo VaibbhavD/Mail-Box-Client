@@ -1,19 +1,22 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { AuthActions } from "../../Store/AuthSlice";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../SideBar/NavBar";
 import MailLogo from "../UI/MailLogo";
+import { SpinLoader } from "../UI/Loader";
 
 const Login = () => {
   const EmailRef = useRef();
   const PasswordRef = useRef();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [loader, setloader] = useState(false);
 
   const SignUpHandler = async (e) => {
     e.preventDefault();
+    setloader(true);
     const Email = EmailRef.current.value;
     const Password = PasswordRef.current.value;
 
@@ -38,6 +41,7 @@ const Login = () => {
       const data = await res.json();
       alert(data.error.message);
     }
+    setloader(false);
   };
 
   return (
@@ -86,7 +90,8 @@ const Login = () => {
                         </div>
                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                           <button type="submit" class="btn btn-primary btn-lg">
-                            Login
+                            {loader && <>{SpinLoader}</>}
+                            {!loader && <>Login</>}
                           </button>
                         </div>
                         <p className="text-center">
